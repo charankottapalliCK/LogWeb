@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+   <meta charset="UTF-8">
+    <title>{{t}}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css"
+          href="{{ url_for('static',filename='assets/js/bootstrap/css/bootstrap.min.css')}}">
+    <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+    <!-- Custom styles for this template -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="{{ url_for('static',filename='assets/js/app.js')}}"></script>
+    <link rel="stylesheet" type="text/css"
+          href="{{ url_for('static',filename='assets/css/style.css')}}">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawVisualization);
+
+      function drawVisualization() {
+        // Some raw data (not necessarily accurate)
+        var data = google.visualization.arrayToDataTable([
+         ['INFO', 'NETWORK', 'ERROR','REPL','CONTROL','ERR','STORAGE','CRIT'],
+            [Math.log(114226),Math.log(66310),Math.log(47267),Math.log(161),Math.log(79),Math.log(71),Math.log(48),Math.log(6)]
+      ]);
+
+    var options = {
+      title : 'Error Data Visualization',
+      vAxis: {title: 'Count (Scaled to Log to the base 10)'},
+      hAxis: {title: 'Error Category'},
+      seriesType: 'bars',
+      series: {5: {type: 'line'}}
+    };
+
+    var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+  }
+  function theimage(){
+    var filename = document.getElementById('file-id').value;
+    document.getElementById('filePath').innerHTML = filename;
+}
+    </script>
+    <script src="src/jquery-bootstrap-modal-steps.js"></script>
+    <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+    <script> zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9","ee6b7db5b51705a13dc2339db3edaf6d"];
+    </script>
+    <link href="https://fonts.googleapis.com/css?family=Crete+Round" rel="stylesheet">
+<style>
+body, html {
+    height: 100%;
+    font-family: "Inconsolata", sans-serif;
+}
+.bgimg {
+    background-position: center;
+    background-size: cover;
+    background-image: url("http://imagenpng.com/wp-content/uploads/img/pc-code-635x235.jpg");
+    min-height: 75%;
+}
+.menu {
+    display: none;
+}
+</style>
+
+<body>
+
+<!-- Links (sit on top) -->
+<div class="w3-top">
+  <div class="w3-row w3-padding w3-black">
+    <div class="w3-col s3">
+      <a href="#" class="w3-button w3-block w3-black">LOGytics</a>
+    </div>
+    <div class="w3-col s3">
+      <a href="#about" class="w3-button w3-block w3-black">Prediction</a>
+    </div>
+    <div class="w3-col s3">
+      <a href="#menu" class="w3-button w3-block w3-black">AboutUS</a>
+    </div>
+    <div class="w3-col s3">
+      <a href="#where" class="w3-button w3-block w3-black">What is Logytics</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header with image -->
+<header class="bgimg w3-display-container" id="home">
+  <div class="w3-display-bottomleft w3-center w3-padding-large w3-hide-small">
+    <span class="w3-tag"></span>
+  </div>
+  <div class="w3-display-middle w3-center">
+    <span class="w3-text-white" style="font-size:90px">Logytics<br> </span>
+  </div>
+  <div class="w3-display-bottomright w3-center w3-padding-large">
+    <span class="w3-text-white"></span>
+  </div>
+</header>
+
+<!-- Add a background color and large text to the whole page -->
+<div class="w3-pale-blue w3-large" style="padding-left: 2%;padding-right: 2%;">
+
+<!-- About Container -->
+<div class="w3-container" id="about">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-64"><span class="w3-wide">UPLOAD FILE</span></h5>
+     <div class="logupload" style="padding-left: 40%;">
+            <label for="file-id" class="custom-file-upload">
+                <i class="glyphicon glyphicon-paperclip" style="font-size: 100px;border-color: green;"></i>
+            </label><br>
+
+
+            <input id="file-id" type="file" onchange="theimage();"/>
+            <span id="filePath"></span>
+
+        </div>
+  </div>
+</div>
+  <div class="row">
+            <div class="col-sm-8">
+                <div class="form-group">
+                    <label for="logpaste">Paste your log Here:</label>
+                    <textarea class="form-control" rows="20" id="logpaste" style="border-radius: 20px;"></textarea>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group" style="border-radius: 5px;">
+                    <label>Word Cloud</label>
+                    <div id="myChart"></div>
+                    <script>
+                            var myConfig = {
+                                type: 'wordcloud',
+                                options: {
+                                    text: 'Key_already_exists Key_already_exists Key_already_exists Key_already_exists pod_has_unbound_PersistentVolumeClaims pod_has_unbound_PersistentVolumeClaims Connection_refused connection_Connection_refused connection Connection_refused connection reset_by_peer scheduling_zen_zookeeper-a scheduling_zen_zookeeper-a scheduling_zen_zookeeper-a scheduling_zen_zookeeper-a scheduling_zen_solr-a scheduling_kube-system mongo_deploy-a-afaafffaaa-mpcdg mongo_deploy-a-afaafffaaa-mpcdg mongo_deploy-a-afaafffaaa-mpcdg proxying_data_from_backend_to_client '
+                                }
+                            };
+
+                            zingchart.render({
+                                id: 'myChart',
+                                data: myConfig,
+                                height: 400,
+                                width: '100%'
+                            });
+
+                    </script>
+                </div>
+            </div>
+        </div>
+<!-- Menu Container -->
+<div class="w3-container" id="menu">
+  <div class="w3-content" style="max-width:700px">
+
+    <h5 class="w3-center w3-padding-48"><span class=" w3-wide">How The Prediction Works</span></h5>
+
+    <div class="w3-row w3-center w3-card w3-padding">
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Eat');" id="myLink">
+        <div class="w3-col s6 tablink">Without Prediction</div>
+      </a>
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Drinks');">
+        <div class="w3-col s6 tablink">With Prediction</div>
+      </a>
+    </div>
+
+    <div id="Eat" class="w3-container menu w3-padding-48 w3-card">
+      <h5>Step - 1</h5>
+      <p class="w3-text-grey"></p><br>
+
+      <h5>Step - 2</h5>
+      <p class="w3-text-grey"></p><br>
+
+      <h5>Step -4 </h5>
+      <p class="w3-text-grey"></p><br>
+
+    </div>
+
+    <div id="Drinks" class="w3-container menu w3-padding-48 w3-card">
+     <h5>Step - 1</h5>
+      <p class="w3-text-grey"></p><br>
+
+      <h5>Step - 2</h5>
+      <p class="w3-text-grey"></p><br>
+
+      <h5>Step -4 </h5>
+      <p class="w3-text-grey"></p><br>
+
+    </div>
+
+  </div>
+</div>
+
+<br>
+    <div class="jumbotron" style="padding:5%;">
+
+<div id="chart_div" style="width: 100%; height: 500px;"></div>
+
+    </div>
+</div>
+
+<script>
+// Tabbed Menu
+function openMenu(evt, menuName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("menu");
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+     tablinks[i].className = tablinks[i].className.replace(" w3-dark-grey", "");
+  }
+  document.getElementById(menuName).style.display = "block";
+  evt.currentTarget.firstElementChild.className += " w3-dark-grey";
+}
+document.getElementById("myLink").click();
+</script>
+
+</body>
+</html>
+</html>
